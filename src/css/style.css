@@ -1,0 +1,146 @@
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+
+	--font-color: #080808;
+	--outline-color: #f0a000;
+	--white: #ffffff;
+
+	--input-width: 2.75rem;
+	--input-radius: 1.875rem;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	height: 100svh;
+	color: var(--font-color);
+	font-family: sans-serif;
+}
+
+noscript {
+	text-align: center;
+	color: red;
+}
+
+.container {
+	flex-grow: 1;
+
+	display: grid;
+	grid-template-rows: repeat(2, 1fr);
+}
+
+.progress-wrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.progress-control {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.progress-control__fieldset {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	border: none;
+}
+
+.progress-control__label {
+	display: grid;
+    grid-template-columns: min-content 1fr;
+    align-items: center;
+	gap: 1rem;
+}
+
+.progress-control__value {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+	appearance: none;
+    padding: 0.25rem 0.5rem;
+	width: var(--input-width);
+	text-align: center;
+    border: 1px solid currentColor;
+    border-radius: var(--input-radius);
+    background-color: transparent;
+	font-size: 100%;
+}
+
+.progress-control__value:focus-visible {
+	outline: 0.125rem solid var(--outline-color);
+}
+
+@media (orientation: landscape) {
+	.container {
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: initial;
+	}
+
+	.progress-control {
+		justify-content: center;
+	}
+}
+
+/* Toggle */
+
+.toggle__input {
+	position: absolute;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+    pointer-events: none;
+	opacity: 0;
+}
+
+.toggle__icon {
+	--bgColor: #eef3f6;
+	--bgColorChecked: #005dff;
+
+    --transitionIn: cubic-bezier(.55,0,1,.45);
+	--transitionInOut: cubic-bezier(.85,0,.15,1);
+
+    width: var(--input-width);
+    height: 1.75rem;
+    padding: 0.125rem;
+	background: var(--bgColor);
+    border-radius: var(--input-radius);
+    transition: background var(--transitionIn) .2s;
+}
+
+.toggle__knob {
+    display: flex;
+	align-items: center;
+    justify-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    background: var(--white);
+    border-radius: 50%;
+    transition: transform var(--transitionInOut) .2s;
+}
+
+/* Toogle: checked */
+
+.toggle__input:checked + .toggle__icon {
+	background: var(--bgColorChecked);
+}
+
+.toggle__input:checked + .toggle__icon .toggle__knob {
+	transform: translate3d(1rem, 0, 0);
+}
+
+/* Toogle: focused */
+
+.toggle__input:focus-visible + .toggle__icon {
+	outline: 0.125rem solid var(--outline-color);
+}
+
+/* Toogle: not disabled */
+
+.toggle:has(.toggle__input:not(:disabled)) {
+	cursor: pointer;
+}

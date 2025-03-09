@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress Demo</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./components/CustomProgress.js" defer></script>
+    <script src="./main.js" defer></script>
+</head>
+<body>
+    <header>Progress</header>
+    <main class="container">
+        <div class="progress-wrapper">
+            <custom-progress
+                class="custom-progress"
+                role="progressbar"
+                aria-live="polite"
+            >
+            </custom-progress>
+            <noscript>JS is required for this progress component</noscript>
+        </div>
+
+        <div class="progress-control">
+            <fieldset class="progress-control__fieldset">
+                <label class="progress-control__label ">
+                    <input
+                        class="progress-control__value"
+                        name="progress-value"
+                        type="text"
+                        inputmode="numeric"
+                        pattern="[0-9]{1}$|^[1-9]{1}[0-9]{1}$|^100"
+                        placeholder="0"
+                        data-target-attr="value"
+                    />
+                    <span>Value</span>
+                </label>
+
+                <label class="progress-control__label toggle">
+                    <input
+                        class="progress-control__animation toggle__input"
+                        type="checkbox"
+                        name="progress-animate"
+                        data-target-attr="animated"
+                    >
+                    <span class="toggle__icon">
+                        <span class="toggle__knob"></span>
+                    </span>
+                    <span>Animate</span>
+                </label>
+
+                <label class="progress-control__label toggle">
+                    <input
+                        class="progress-control__visibility toggle__input"
+                        type="checkbox"
+                        name="progress-hide"
+                        data-target-attr="hidden"
+                    >
+                    <span class="toggle__icon">
+                        <span class="toggle__knob"></span>
+                    </span>
+                    <span>Hide</span>
+                </label>
+            </fieldset>
+        </div>
+    </main>
+</body>
+</html>
