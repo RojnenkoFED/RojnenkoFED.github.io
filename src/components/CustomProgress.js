@@ -29,48 +29,48 @@ class CustomProgress extends HTMLElement {
     }
 
     _styleCSS = `
-        :host {
-            --size: 7.5rem;
-            --bar-width: 0.75rem;
+    :host {
+        --size: 7.5rem;
+        --bar-width: 0.75rem;
 
-            --fill-color: #005dff;
-            --rest-color: #eef3f6;
-            
-            --rotate-duration: 3s;
-        }
-    
-        .progress {
-            --donat-mask: radial-gradient(
-                farthest-side,
-                transparent calc(100% - var(--bar-width)),
-                #fff calc(100% - var(--bar-width) + 1px)
-            );
+        --fill-color: #005dff;
+        --rest-color: #eef3f6;
+        
+        --rotate-duration: 3s;
+    }
 
-            display: grid;
-            place-items: center;
-            width: var(--size);
-            aspect-ratio: 1 / 1;
-            border-radius: 50%;
-            background: conic-gradient(
-                var(--fill-color) var(--progress-value, 0),
-                var(--rest-color) var(--progress-value, 0)
-            );
-            -webkit-mask: var(--donat-mask);
-                    mask: var(--donat-mask);
-                    
-            animation: var(--rotate-duration) linear infinite paused rotate;
-        }
-            
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
+    .progress {
+        --donat-width: calc(100% - var(--bar-width));
+        --donat-mask: radial-gradient(
+            farthest-side,
+            transparent var(--donat-width),
+            #fff var(--donat-width)
+        );
 
-            to {
-                transform: rotate(360deg);
-            }
+        display: grid;
+        place-items: center;
+        width: var(--size);
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+        background: conic-gradient(
+            var(--fill-color) var(--progress-value, 0),
+            var(--rest-color) var(--progress-value, 0)
+        );
+        -webkit-mask: var(--donat-mask);
+                mask: var(--donat-mask);
+                
+        animation: var(--rotate-duration) linear infinite paused rotate;
+    }
+        
+    @keyframes rotate {
+        from {
+            transform: rotate(0deg);
         }
-    `;
+
+        to {
+            transform: rotate(360deg);
+        }
+    }`;
 
     constructor() {
         super();

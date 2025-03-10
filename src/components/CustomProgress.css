@@ -9,10 +9,11 @@
 }
 
 .progress {
+    --donat-width: calc(100% - var(--bar-width));
     --donat-mask: radial-gradient(
         farthest-side,
-        transparent calc(100% - var(--bar-width)),
-        #fff calc(100% - var(--bar-width) + 1px)
+        transparent var(--donat-width),
+        #fff var(--donat-width)
     );
 
     display: grid;
