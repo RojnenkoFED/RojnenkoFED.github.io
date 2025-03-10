@@ -40,7 +40,7 @@ class CustomProgress extends HTMLElement {
     }
 
     .progress {
-        --donat-width: calc(100% - var(--bar-width));
+        --donat-width: calc(100% - max(0.125rem, var(--bar-width, 0.75rem)));
         --donat-mask: radial-gradient(
             farthest-side,
             transparent var(--donat-width),
@@ -49,17 +49,17 @@ class CustomProgress extends HTMLElement {
 
         display: grid;
         place-items: center;
-        width: var(--size);
+        width: max(0px, var(--size, 7.5rem));
         aspect-ratio: 1 / 1;
         border-radius: 50%;
         background: conic-gradient(
-            var(--fill-color) var(--progress-value, 0),
-            var(--rest-color) var(--progress-value, 0)
+            var(--fill-color, #005dff) var(--progress-value, 0),
+            var(--rest-color, #eef3f6) var(--progress-value, 0)
         );
         -webkit-mask: var(--donat-mask);
                 mask: var(--donat-mask);
                 
-        animation: var(--rotate-duration) linear infinite paused rotate;
+        animation: var(--rotate-duration, 3s) linear infinite paused rotate;
     }
         
     @keyframes rotate {
