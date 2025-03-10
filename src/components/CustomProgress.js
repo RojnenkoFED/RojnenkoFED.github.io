@@ -5,11 +5,7 @@ class CustomProgress extends HTMLElement {
             animated: {
                 isBoolean: true,
                 setValue(isAnimated) {
-                    if (isAnimated) {
-                        this.style.animation = '3s linear infinite rotate';
-                    } else {
-                        this.style.animationPlayState = 'paused';
-                    }
+                    this.style.animationPlayState = isAnimated ? 'running' : 'paused';
                 }
             },
             hidden : {
@@ -39,6 +35,8 @@ class CustomProgress extends HTMLElement {
 
             --fill-color: #005dff;
             --rest-color: #eef3f6;
+            
+            --rotate-duration: 3s;
         }
     
         .progress {
@@ -59,6 +57,8 @@ class CustomProgress extends HTMLElement {
             );
             -webkit-mask: var(--donat-mask);
                     mask: var(--donat-mask);
+                    
+            animation: var(--rotate-duration) linear infinite paused rotate;
         }
             
         @keyframes rotate {

@@ -4,6 +4,8 @@
 
     --fill-color: #005dff;
     --rest-color: #eef3f6;
+
+    --rotate-duration: 3s;
 }
 
 .progress {
@@ -25,8 +27,7 @@
     -webkit-mask: var(--donat-mask);
             mask: var(--donat-mask);
 
-    /* Used when animation launched */
-    /* animation: 3s linear infinite rotate; */
+    animation: var(--rotate-duration) linear infinite paused rotate;
 }
 
 @keyframes rotate {
